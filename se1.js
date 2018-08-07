@@ -39,15 +39,12 @@ rowcount = [];
  {
    row[k]=sudoku.slice(temp1,temp1+9); 
    temp1=temp1+9;
-  //console.log(row);
   } 
-  //console.log(row + " row values");
   
 //calculating no. of digits in a row
 console.log("before firstfunction")
 
 calc_digits_row();
-   //count=0;
    var t=0;
    console.log('to print column');
    
@@ -68,14 +65,12 @@ function calc_digits_row()
   for(l=0;l<9;l++)
  {
    rowwise[l] = [];     //building a 2X2 array
-   //console.log(rowwise[l]);
    
   	for(var m=0;m<9;m++)
   {
      if(row[l][m] !== '-')
      {
      	rowwise[l].push(row[l][m]);
-       //console.log("!==");
      }
   }
  }
@@ -84,42 +79,26 @@ function calc_digits_row()
 }
 
 
-
- //finding_length(rowwise[0])
-
-//finding_highest();
-
-
 filling_row_or_column();
 
 
- //calc_digits_col(3);
-
-
-//finding the row in which there are highest numbers
 function finding_highest()
  {
  	var temp=0;
  	var length;
- 	//var index;
- for (var i=0;i<9;i++)
+  for (var i=0;i<9;i++)
   {
    length= others.finding_length(rowwise[i])
-   //console.log(rowwise[i]);
    
     if(temp<length)
      { 
      	temp=length ;
      	index=i;
-        //console.log("here the temp is"+ temp);
-    }
-
+     }
   }
   console.log('temping');
   console.log(index);
-  
  	console.log(temp);
- 	//console.log(rowwise[index]);
  	return index;
  }
 
@@ -141,20 +120,6 @@ function filling_row_or_column()
    
    
    var str_of_rem = rem_numbers.length;
-//    var columns = [];
-//    while(t<9)
-//      {
-//       columns[t] = row[t][3];
-//       t++
-                    
-//      }
-
-//      console.log("Col values")
-//      console.log(columns)
-
-//      var find_col_com = others.finding_complement(columns)
-//      console.log("col values");
-//      console.log(find_col_com);
 
 
 function modifyRowOrCol(numbers,n,ind,acnum)
@@ -171,13 +136,9 @@ function modifyRowOrCol(numbers,n,ind,acnum)
     console.log('#######');
     
     for(let k=0;k<9;k++)
- {
-//    row[k]=sudoku.slice(temp1,temp1+9); 
-//    temp1=temp1+9;
-  console.log(row[k]);
-  } 
-    
-
+   {
+     console.log(row[k]);
+   } 
 }
 
 function aisehi()
@@ -188,7 +149,7 @@ function aisehi()
 
 
  for(let r=0;r<rem_numbers.length;r++)
- {
+ {  let n;
     let count=0;
    for(let q=0;q<rem_places.length;q++)
    {
@@ -206,7 +167,6 @@ function aisehi()
      
      console.log(count + " time ");
      var find_col_com = others.finding_complement(columns)
-     //console.log(find_col_com.includes(1))
      
      console.log(columns)
      console.log('with complements');
@@ -216,32 +176,31 @@ function aisehi()
      console.log(rem_numbers[r]);
      console.log('true or false');
      
-     //console.log(find_col_com.includes(rem_numbers[r]))
      if((find_col_com.includes(rem_numbers[r])))
      {
         console.log('for count');
         count++;
+        n=q;
+        console.log("q value for count is " + n);
+        
         console.log(count);
         console.log("index ki value idhar hai  " + rem_places[q]);
         
         
      }
-     else
-      {
+     else if(q!=2)
+      {   console.log('yeha aayi');
+      
           continue;}
           console.log('&&&&&&&&');
           
-     //console.log(rem_places.length-1);
        if(q==2)
-     {(count == 1) ?  modifyRowOrCol(rem_numbers[r],r,rem_places[q],rem_numbers[r])   :  aisehi(rem_numbers) }
+     {(count == 1) ?  modifyRowOrCol(rem_numbers[r],r,rem_places[n],rem_numbers[r])   :  aisehi(rem_numbers) }
 
-
+              
    }
 
 }
-   //var col_rem_num = others.finding_complement(columns)
-
-   //corr_col_numbers=[];
 }
 
 console.log(row[0][3]);
